@@ -1,4 +1,5 @@
-import s from "./tx.module.css"
+import styles from "./tx.styles";
+import { Text, View } from "react-native";
 
 type TxProps = {
     rawAmount: number;
@@ -10,17 +11,11 @@ export default function Transaction({ rawAmount, location, delta }: TxProps) {
     console.log(rawAmount)
 
     return (
-        <div>
-            <div className={s.grid}>
-                <div className={s.left}>
-                    <h1 className={s.item}>{location}</h1>
-                </div>
-                <div className={s.right}>
-                    <h1 className={s.item}>£{rawAmount}</h1>
-                </div>
-                <div>
-                    <h1 className={s.delta}>£{delta}</h1>
-                </div>
-            </div>
-        </div>)
+        <View>
+            <View style={styles.grid}>
+                <Text style={styles.item}>{location}</Text>
+                <Text style={styles.item}>£{rawAmount}</Text>
+                <Text style={styles.delta}>£{delta}</Text>
+            </View>
+        </View>)
 };

@@ -1,4 +1,6 @@
-import s from "./card.module.css"
+import styles from "./card.style";
+import { View } from "react-native";
+import { Text } from "react-native";
 
 type TxProps = {
     title: string;
@@ -9,11 +11,11 @@ type TxProps = {
 export default function Card({ title, body, footer }: TxProps) {
 
     return (
-        <div className={s.container}>
-            <div className={s.grid}>
-                <div className={s.title}>{title}</div>
-                <div className={s.body}>£{body}</div>
-                <div className={s.footer}>{footer}</div>
-            </div>
-        </div>)
+        <View style={styles.container}>
+            <View style={styles.grid}>
+                <Text style={styles.footer}>{title}</Text>
+                <Text style={styles.amount}>£{body}</Text>
+                <Text style={styles.footer}>{footer}</Text>
+            </View>
+        </View>)
 };

@@ -1,7 +1,8 @@
 import Transaction from "../transaction/tx";
 import TransactionDateBlock from "../tx-date-block/tx-date-block";
-import s from "./tx-grid.module.css"
+import styles from "./tx-grid.styles";
 import { useEffect, useState } from "react";
+import { View } from "react-native";
 
 export interface ApiResponse {
     id: number
@@ -43,14 +44,14 @@ export default function TransactionGrid() {
   
 
     return (
-        <div className={s.container}>
-            <div className={s.grid}>
+        <View style={styles.container}>
+            <View style={styles.grid}>
                 {Object.entries(transactionsByDate).map(([date, transactions]) => (
                     <TransactionDateBlock key={date} date={date} transactions={transactions} />
                 ))}
-            </div>
+            </View>
 
-        </div>
+        </View>
 
     );
 }

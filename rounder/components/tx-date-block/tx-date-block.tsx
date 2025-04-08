@@ -1,6 +1,7 @@
 import Transaction from "../transaction/tx";
-import s from "./tx-date-block.module.css"
+import styles from "./tx-date-block.styles";
 import { ApiResponse } from "../transaction-grid/tx-grid";
+import { View, Text } from "react-native";
 
 type DateBlockProps = {
     date: string;
@@ -15,15 +16,14 @@ function formatDate(dateString: string): string {
 export default function TransactionDateBlock({ date, transactions }: DateBlockProps) {
     console.log(transactions)
     return (
-        <div className={s.container}>
-            <div className={s.date}>{formatDate(date)}</div>
-            <div className={s.grid}>
+        <View style={styles.container}>
+            <Text style={styles.date}>{formatDate(date)}</Text>
+            <View style={styles.grid}>
                 {transactions.map((transaction) => (
                     <Transaction key={transaction.id} delta={transaction.delta} rawAmount={transaction.raw_amount} location={transaction.description} />
                 ))}
-            </div>
-
-        </div>
+            </View>
+        </View>
 
     );
 }
